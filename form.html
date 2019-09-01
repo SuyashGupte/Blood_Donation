@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hero</title>
+</head>
+<script type="text/javascript" src = "jquery-min.js"></script>
+<style type="text/css">
+	label
+	{
+		width:120px;
+		margin-right: 5px;
+		position: relative;
+		float: left;
+		top: 4px
+
+	}
+	input
+	{
+		font-family: sans-serif;
+		font-weight: bold;
+		width:200px;
+		padding:6px;
+		border-radius: 8px;
+		border: 1px solid red;
+		margin-bottom: 10px;
+		
+
+	}
+	#wrapper
+	{
+		width:340px;
+		margin:0 auto;
+		border-radius: 8px;
+		border:1px solid black;
+		padding: 40px 70px 40px 70px;
+		
+	}
+	#submit
+	{
+		width:100px;
+		border:1px solid green;
+		margin-left: 120px;
+
+	}
+</style>
+<body>
+<div id="wrapper">
+<label for="email">E-mail</label>
+<input type="text" name="email" id="email"placeholder="Enter E-mail"><br>
+<label for="phone">Number</label>
+<input type="text" name="phone" id="phone"placeholder="Enter Mobile Number"><br>
+<label for="pass">Password</label>
+<input type="Password" name="pass" id="pass" placeholder="Enter Password"><br>
+<label for="cpass">Confirm Password</label>
+<input type="Password" name="cpass" id="cpass"placeholder="Re-Enter Password"><br>
+<input type="Submit" name="submit" value= "Submit" id="submit">
+</div>
+<script type="text/javascript">
+	function isEmail(email) 
+	{
+  		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+ 		return regex.test(email);
+	}
+	$("#submit").click(function()
+	{
+		var error="";
+		var field="";
+		if($("#email").val()=="")
+		{
+			field+="E-mail";
+		}
+		if($("#phone").val()=="")
+		{
+			field+=",Number";
+		}
+		if($("#pass").val()=="")
+		{
+			field+=",Password";
+		}
+		if($("#cpass").val()=="")
+		{
+			field+=",Confirm Password";
+		}
+		if(field!="")
+		{
+			alert("Fields Empty :"+field);
+		}
+		if(isEmail($("#email").val())==false)
+		{
+			error+="E-mail address not valid";
+			
+		}
+		if($.isNumeric($("#phone").val())==false)
+		{
+			
+			error+=",Enter only numbers";
+			
+		}
+		if($("#pass").val()!= $("#cpass").val())
+		{
+			error+=",Passwords don't match";
+			
+		}
+		if(error!="")
+		{
+			alert(error);
+		}
+	})
+</script>
+</body>
+</html>
