@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+
+	<HEAD>
+		<TITLE> Give Blood, Give Life. </TITLE>
+		<LINK rel="shortcut icon" type="image/png" href="Images/TransparentBackgroundPNG/TitleLogo.png">
+		<LINK rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<META name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<!--==========================
+		     SCRIPT FOR BOTTOM SCROLL
+			==========================-->
+		<script>
+			$(document).ready(function()
+			{
+			// Add smooth scrolling to all links
+				$("A").on('click', function(event) 
+				{
+					// Make sure this.hash has a value before overriding default behavior
+					if (this.hash !== "") 
+					{
+					  // Prevent default anchor click behavior
+					  event.preventDefault();
+
+					  // Store hash
+					  var hash = this.hash;
+
+					  // Using jQuery's animate() method to add smooth page scroll
+					  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+					  $('html, body').animate({scrollTop: $(hash).offset().top}, 750, function()
+					  {
+						// Add hash (#) to URL when done scrolling (default click behavior)
+						window.location.hash = hash;
+					  });
+					} // End if
+				});
+			});
+		</script>
+		
+		<!--======================
+		      STYLING FOR HEADER
+			======================-->
+		<STYLE>
+			#navbar
+			{
+  			   List-style-type : none;
+  			   margin : 0;
+  			   padding : 0;
+  			   overflow : hidden;
+  			   background-color : rgb(39,42,56);
+  			   opacity : 0.9;
+			}
+			.normal
+			{
+  			   float:left;
+			}
+			.List
+			{	
+  			   display: block;
+  			   color: white;
+  			   text-align :center;
+  			   padding: 16px 16px;
+  			   text-decoration: none;
+			}
+			#navbar :hover 
+			{
+  			   background-color: #DA2F16;
+			}
+			.login
+			{
+ 			   float:right;
+			}
+			.logo
+			{
+				position : relative;
+				left: 300px;
+			}
+			.logo :hover
+			{
+				background-color: rgb(39,42,56);
+			}
+		</STYLE>
+		
+		<!--====================
+		      STYLING FOR BODY
+			====================-->		
+		<STYLE type="text/css">
+			html { overflow-x : hidden; }
+			
+			html, 
+			body 
+			{
+				position : relative;
+				height : 100%;
+				background-repeat : no-repeat;
+				background-size : cover;
+				margin : 0;
+				padding : 0;
+			}
+		</STYLE>
+		
+		<!--==========================
+		     STYLING FOR ROW OF CARDS
+			==========================-->
+		<STYLE>
+			.card
+			{
+				left : 65px
+				box-shadow : 0 4px 8px 0 rgba(0,0,0,0.2);
+				transition : 0.215s;
+				width : 23%;
+				font-family : Crimson Text;
+				background-color : rgb(39,42,56);
+				color : white;
+			}
+
+			.card:hover 
+			{
+				box-shadow : 0 8px 16px 0 rgba(50,0,0,1);
+			}
+
+			.container
+			{
+				padding: 2px 16px;
+			}
+			
+			.row 
+			{
+				display: flex;
+				position: relative;
+				
+				left: 8px;
+				padding: 10px;
+			}
+			
+			.fa 
+			{ 
+				font-size:50px; 
+			} 
+			
+			#CardIcon
+			{
+				background-color: rgb(39,42,56);
+				position: relative;
+				top: 8px;
+				bottom : 2px;
+				left: 134px;
+			}
+			
+			.CardLink
+			{
+				color:inherit;
+				text-decoration: none;
+				border:0; 
+				text-decoration:none; 
+				outline:none;
+			}
+		</STYLE>
+		
+		<!--====================
+			 STYLING FOR FOOTER
+			====================-->
+		<STYLE>			
+			#Footer
+			{
+				background-image : url(Images/HomePageFooter.jpg);
+				background-position : center;
+				background-repeat : no-repeat;
+				background-size : cover;
+				height : 425px;
+				width : 100%;
+				position : relative; 
+				top : 475px;
+				overflow : hidden;
+			}
+			
+			#FooterLogo
+			{
+				position : relative;
+				right : 85px;
+			}
+			
+			.AboutUs
+			{
+				position : absolute;
+				color : white;
+				font-family : Crimson Text;
+				top : 40px;
+				left : 30px;
+			}
+			
+			.ProfileRow
+			{
+				display : flex;
+				position: relative;
+		        margin : 25px;
+				padding: 10px;
+			}
+			
+			.ProfilePhoto{transition: transform .09s;}
+		
+			.ProfilePhoto:hover 
+			{
+				transform: scale(1.14);
+			}
+			
+			.FooterQuote
+			{
+				position : relative;
+				bottom : 50px;
+			}
+			
+			.ProfileInfo
+			{
+				position : relative;
+				left : 35px;
+				top : 26px;
+				font-size : 35px;
+			}
+			
+			.fa 
+			{ 
+				font-size:50px; 
+			}
+		</STYLE>
+	</HEAD>
+	
+	<BODY>
+
+		<!--========
+			 HEADER
+			========-->
+		<DIV class = "Header">
+			<UL id = navbar>
+				<LI class = "normal"><A class="List" href="home.html"><i class="fa fa-home" aria-hidden="true" style = "font-size:30px;"></i> &nbsp;&nbsp;&nbsp;Home</A></LI>
+				<LI class = "normal"><A class="List" href="news.html"><i class="fa fa-newspaper-o" aria-hidden="true" style = "font-size:30px;"></i> &nbsp;&nbsp;&nbsp;News</A></LI>
+				<LI class = "normal"><A class="List" href = "#Footer"><i class="fa fa-address-book" aria-hidden="true" style = "font-size:30px;"></i> &nbsp;&nbsp;&nbsp;Contact</A></LI>
+				<IMG class ="logo" src="Images/TransparentBackgroundPNG/HeaderLogo.png" height="63px">
+				<LI class = "login"><A class="List" href = "#" ><i class="fa fa-user-circle" aria-hidden="true" style = "font-size:30px;"></i> &nbsp;&nbsp;&nbsp;Sign Up</A></LI>
+				<LI class = "login"><A class="List" href="login.html"><i class="fa fa-sign-in" aria-hidden="true" style = "font-size:30px;"></i> &nbsp;&nbsp;&nbsp;Login</A></LI>
+			</UL>
+		</DIV>
+		<BR><BR>
+		
+		<!--==============
+			 ROW OF CARDS
+			==============-->
+			<DIV class="row">
+				<DIV class="card">
+					<A class = "CardLink" href = "Donor.html">
+						<IMG src="Images/Registration.jpg" alt="Avatar" height="250px" style="width:100%">
+						<DIV class="container">
+							<i id = "CardIcon" class="fa fa-user-md"></i>
+							<H2 align="center"><b> REGISTER AS A DONOR </b></H2> 
+							<P>Blood donations can help save people's LIves. Learn how blood donations help, what to expect, and how to get ready for your first blood donation.</P> 
+							<P>Are you Eligible for blood donation? Find out about the EligibiLIty requirements to donate blood today. Learn about general health, travel, medications, tattoos, and more.</P>
+						</DIV>
+					</A>
+				</DIV>
+				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<DIV class="card">
+					<A class = "CardLink" href = "Donor.html">
+						<IMG src="Images/TransparentBackgroundPNG/Doctors.png" height="250px" alt="Avatar" style="width:100%">
+						<DIV class="container">
+							<i id = "CardIcon" class="fa fa-bug" aria-hidden="true"></i>
+							<H2 align="center" ><b> ALREADY A REGISTERED DONOR </b></H2> 
+							<P>Generate Reports based on Participation of Blood Donors.</P> 
+							<P>Calculate Amount of Donors got Rejected.</P>
+							<P>At choice Screening, we provide the exceptional service we'd want to experience ourselves.</P>
+						</DIV>
+					</A>
+				</DIV>
+				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<DIV class="card">
+					<A class = "CardLink" href = "Donor.html">
+						<IMG src="Images/EligibiLItyTest.jpg" alt="Avatar" height="250px" style="width:100%">
+						<DIV class="container">
+							<i id = "CardIcon" class="fa fa-hospital-o"></i>
+							<H2 align="center"><b> TAKE AN ELIGIBILITY TEST </b></H2> 
+							<P>Giving the "right" type of blood donation - based on your blood type and patient needs - helps ensure the best use of your valuable contribution. Here are some things to consider when determining how you can have the most impact.</P> 
+						</DIV>
+					</A>
+				</DIV>
+				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<DIV class="card">
+					<A class = "CardLink" href = "Donor.html">
+						<IMG src="Images/StoredBlood.jpg" alt="Avatar" height="250px"  style="width:100%">
+						<DIV class="container">
+							<i id = "CardIcon" class="fa fa-ambulance"></i>
+							<H2 align="center"><b>WHAT HAPPENS TO DONATED BLOOD</b></H2> 
+							<P>Your blood journeys through many steps and tests that ensure our blood supply is as safe as possible and helps as many people as possible.</P> 
+							<P>You can learn about all the steps your blood goes through before it reaches a recipient in an informative video.</P>
+						</DIV>
+					</A>
+				</DIV>
+			</DIV>
+			<BR>
+			
+			<!--========
+			     FOOTER
+				========-->
+			<DIV id = "Footer">
+				<DIV class = "AboutUs">
+					<IMG id = "FooterLogo" src = "Images/TransparentBackgroundPNG/TitleLogo.png" align = "right" width = "150px">
+					<i class = "fa fa-users" aria-hidden="true"> About Us</i>
+					
+					<P id = "FooterQuote" align = "center" style = "font-size : 30px;">We Are Just a Group of Regular People Trying to make a Difference.</P>
+					
+					<DIV class = "ProfileRow">
+						<IMG class = "ProfilePhoto" src = "Images/ProfilePhoto/Suyash.png" height = "200px">
+						<P class = "ProfileInfo">Suyash Gupte</P>
+						
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<IMG class = "ProfilePhoto" src = "Images/ProfilePhoto/Pramod.png" height = "200px">
+						<P class = "ProfileInfo">Pramod Sheoran</P>
+						
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<IMG class = "ProfilePhoto" src = "Images/ProfilePhoto/Sujay.png" height = "200px">
+						<P class = "ProfileInfo">Sujay Pawar</P>
+					</DIV>
+				</DIV>
+			</DIV>
+	</BODY>
+</HTML>
