@@ -1,0 +1,72 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Oct 05, 2019 at 05:37 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `blood_donation`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+CREATE DATABASE blood_donation;
+USE blood_donation;
+CREATE TABLE `accounts` (
+  `fname` varchar(15) NOT NULL,
+  `lname` varchar(15) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` bigint(10) NOT NULL,
+  `dob` date NOT NULL,
+  `state` text NOT NULL,
+  `pass` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`fname`, `lname`, `email`, `mobile`, `dob`, `state`, `pass`) VALUES
+('sd', 'suyash', 'gupte.sd', 2147483647, '0000-00-00', '', '1234'),
+('suyash', 'suyash', 'suyash', 123456789, '0000-00-00', 'suyash', 'suyash'),
+('123', '123', '123', 123, '0000-00-00', '123', '123'),
+('123', '123', '123', 123, '0000-00-00', '123', '123'),
+('1999-12-23', '1999-12-23', '1999-12-23', 1999, '1999-12-23', '1999-12-23', '1999-12-23'),
+('Goa', 'Goa', 'Goa', 0, '0000-00-00', 'Goa', 'Goa'),
+('Haryana', 'Haryana', 'Haryana', 0, '0000-00-00', 'Haryana', 'Haryana'),
+('Arunachal Prade', 'Arunachal Prade', 'Arunachal Pradesh', 0, '0000-00-00', 'Arunachal Pradesh', 'Arunachal Pradesh'),
+('Bihar', 'Bihar', 'Bihar', 0, '0000-00-00', 'Bihar', 'Bihar'),
+('Karnataka', 'Karnataka', 'Karnataka', 0, '0000-00-00', 'Karnataka', 'Karnataka'),
+('ad', 'ad', 'gupte.suyash11@gmail.com', 2147483647, '9999-12-23', 'Maharashtra', '123'),
+('asa', 'ssdd', 'gupte.suyash11@gmail.com', 2147483647, '1999-12-23', 'Maharashtra', '123'),
+('q', '', 'as@gma.in', 123456, '1456-08-04', 'Kerala', '78'),
+('', 'k', 'lo@m.in', 2147483647, '9999-12-23', 'Maharashtra', '123'),
+('a', 'ad', 'sumeet28gupte@gmail.com', 2345678, '1999-12-23', 'Maharashtra', '1'),
+('c', 'v', 'as@gma.in', 1234567890, '4567-12-05', 'Lakshadweep', '12'),
+('ad', 'ad', 'gupte.suyash11@gmail.com', 2147483647, '9999-12-23', 'Maharashtra', '123'),
+('as', 'ad', 'fghjkl@gamil.cp', 12345678, '1999-02-12', 'Jammu and Kashmir', '123'),
+('suyash', 'gupte', 'abc@gmail.com', 234567469, '1999-12-23', 'Maharashtra', '12'),
+('SUAYSH', 'GUPTE', 'ASDFG@GAMIL.COM', 123412345, '1999-12-23', 'Lakshadweep', '1'),
+('GUPTE SUYASH', 'à¤—à¥à¤ªà¥à¤¤', 'gupte.suyash11@gmail.com', 8605, '5545-03-04', 'Maharashtra', '12');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
