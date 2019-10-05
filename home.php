@@ -86,13 +86,15 @@ a:active {
 label
 {
 font-weight: bold;
+
 }
+
 #fname ,#lname,#pass,#cpass
 {
   margin-top:10px;
   margin-bottom: 0px;
 }
-#fnameerror,#lnameerror,#Emailerror,#numerror,#stateerror,#passerror,#cpasserror,#dateerror
+#fnameerror,#lnameerror,#Emailerror,#numerror,#stateerror,#passerror,#cpasserror,#dateerror,#emaillogerror,#passlogerror
 {
   margin-left: 180px;
   font-size: 70%;
@@ -122,6 +124,10 @@ font-weight: bold;
 { 
 	transition: transform .09s;
 }
+.hide
+{
+	display: none;
+}
 
 </style>
 </head>
@@ -132,9 +138,15 @@ font-weight: bold;
   <li class ="normal"><a class="list" href="#home"><i class="fa fa-home" aria-hidden="true" ></i> Home</a></li>
   <li class ="normal"><a class="list"href="#news"><i class="fa fa-newspaper-o" aria-hidden="true" ></i> News</a></li>
   <li class ="normal"><a class="list"href="#contact"><i class="fa fa-address-book" aria-hidden="true" ></i> Contact</a></li>
-  <li data-toggle="modal" data-target="#ModalLog"class ="login"><a class="list"href="#signup"><i class="fa fa-user-circle" aria-hidden="true" ></i> Sign Up</a></li>
-  <li data-toggle="modal" data-target="#ModalLog1"class ="login"><a class="list"href="#login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+  
+  <li name="Signup" data-toggle="modal" data-target="#ModalLog"class ="login sign"><a class="list"href="#signup"><i class="fa fa-user-circle" aria-hidden="true" ></i> Sign Up</a></li>
+
+  <li data-toggle="modal" data-target="#ModalLog1"class ="login sign"><a class="list"href="#login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+  <li  class ="login logged" ><a class="list"href="profile.php"><i class="fa fa-user-circle" aria-hidden="true" ></i> Profile</a></li>
+
+  <li class ="login logged" ><a class="list"href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Log Out</a></li>
 </ul>
+
 
 <div class="modal fade" id="ModalLog1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -145,31 +157,46 @@ font-weight: bold;
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+     <form action="" id="formlogin" method="POST">
       <div class="modal-body">
-         <form>
-        
+         
+        <p id="emaillogerror"></p>
         <div class="form-group row">
+        	
               <label for="emaillog" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="emaillog" placeholder="Enter Email...">
+                <input type="text" class="form-control" name="emaillog" id="emaillog" placeholder="Enter Email...">
               </div>
           </div>
+          <p id="passlogerror"></p>
           <div class="form-group row">
+          	
               <label for="passlog" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
-                <input type="password" class="form-control" id="passlog" placeholder="Enter Password...">
+                <input type="password" class="form-control" name="passlog"id="passlog" placeholder="Enter Password...">
               </div>
           </div>
-        </form>
+      
+       
+  
       </div>
+      
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-primary">Login</button>
+        <button type="button" name="login" id="login"class="btn btn-primary">Login</button>
+        
       </div>
+  </form>
     </div>
   </div>
 </div>
-<div class="modal fade" id="ModalLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+
+
+
+
+<div  class="modal fade" id="ModalLog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -178,48 +205,50 @@ font-weight: bold;
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+     <form  action="" id="signup" method="POST">
       <div class="modal-body">
-      <form>
+      
         <p id="fnameerror"></p>
         <div class="form-group row">
               <label for="fname" class="col-sm-2 col-form-label">First Name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="fname" placeholder="Enter First name..">
+                <input type="text" name="fname" class="form-control" name="fname" id="fname" placeholder="Enter First name..">
               </div>
-          </div>
+        </div>
           <p id="lnameerror"></p>
           <div class="form-group row">
               <label for="lname" class="col-sm-2 col-form-label">Last name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="lname" placeholder="Enter Last name...">
+                <input type="text" class="form-control" name="lname" id="lname" placeholder="Enter Last name...">
               </div>
           </div>
           <p id="Emailerror"></p>
           <div class="form-group row">
               <label for="Email" class="col-sm-2 col-form-label">Email</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="Email" placeholder="email@example.com">
+                <input type="text" class="form-control" name="email" id="Email" placeholder="email@example.com">
               </div>
           </div>
           <p id="numerror"></p>
           <div class="form-group row">
               <label for="num" class="col-sm-2 col-form-label">Mobile</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="num"placeholder="Enter 10 Digit Number..." maxlength="10">
+                <input type="text" class="form-control" name="mobile" id="num"placeholder="Enter 10 Digit Number..." maxlength="10">
               </div>
           </div>
           <p id="dateerror"></p>
           <div class="form-group row">
               <label for="date" class="col-sm-2 col-form-label">DOB</label>
               <div class="col-sm-10">
-                <input type="date" class="form-control" id="date" >
+                <input type="date" name="date"class="form-control" id="date" >
               </div>
           </div>
           <p id="stateerror"></p>
           <div class="form-group row">
-            <label for="state" class="col-sm-2 col-form-label">State</label>
+            <label for="state"  class="col-sm-2 col-form-label">State</label>
               <div class="col-sm-10">
-                  <select class ="form-control"id="state">
+                  <select name="state" class ="form-control"id="state">
                     <option value="Select"disabled selected>Select State</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -264,25 +293,31 @@ font-weight: bold;
           <div class="form-group row">
               <label for="pass" class="col-sm-2 col-form-label">Password</label>
               <div class="col-sm-10">
-                <input type="Password" class="form-control" id="pass" placeholder="Enter Password...">
+                <input type="Password" class="form-control" name="pass" id="pass" placeholder="Enter Password...">
               </div>
           </div>
           <p id="cpasserror"></p>
           <div class="form-group row">
               <label for="cpass" class="col-sm-2 col-form-label">Confirm Password</label>
               <div class="col-sm-10">
-                <input type="Password" class="form-control" id="cpass" placeholder="Re-enter Password...">
+                <input type="Password" class="form-control" name="cpass" id="cpass" placeholder="Re-enter Password...">
               </div>
+             
           </div>
-          
-      </form>
-      </div>
+        </div>
+     
+      
+       
       <div class="modal-footer">
-        <button id="CreateAccount"type="button" class="btn btn-primary">Create Account</button>
-      </div>
-    </div>
-  </div>
+       
+ <button name="CreateAccount" id="CreateAccount" type="button" class="btn btn-primary">Create Account</button>
+  </div>    
+ </form>
+
 </div>
+</div>
+</div>
+
 
 
 <div id="basics">
@@ -295,7 +330,7 @@ font-weight: bold;
 
 
 <br>
-  <div class="card-deck">
+  <div class="card-deck" id="donor">
     <div class="card" style="width: 18rem;">
       <img src="Images/Blood_donation.png" class="card-img-top" alt="Donor">
       <div class="card-body">
@@ -345,63 +380,137 @@ font-weight: bold;
 </div>
 </body>
 <script type="text/javascript">
+
+$('#donor').click(function(){
+    window.open("donor.html");
+   })
+$('.logged').addClass('hide');
  function isEmail(Email) 
   {
       var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(Email);
   }
-   
+   $('#login').click(function(){
+   	$log=0;
+   	$success=0;
+   	if($('#emaillog').val()=="")
+      {
+        $('#emaillogerror').show();
+        $('#emaillog').css('border','solid 1px red');
+        $('#emaillogerror').html("This Field is Empty");
+        $log=1;
+
+      }
+      else
+      {
+        $('#emaillog').css('border','solid 1px #CED4DA');
+        $('#emaillogerror').hide();
+      }
+      if($('#passlog').val()=="")
+      {
+        $('#passlogerror').show();
+        $('#passlog').css('border','solid 1px red');
+        $('#passlogerror').html("This Field is Empty");
+        $log=1;
+
+      }
+      else
+      {
+        $('#passlog').css('border','solid 1px #CED4DA');
+        $('#passlogerror').hide();
+        
+        
+      }
+      if($log==0)
+      {
+      	$('#formlogin').attr('action','login.php');
+      	$('#login').attr('type','submit');
+      	$.ajax({  
+                     url:"login.php",  
+                     method:"POST",  
+                     data:$('#formlogin').serialize(),  
+                     success:function(data){  
+                          if(!success)
+                          {
+                          	alert ("Invalid Email/Password!!");
+
+
+                          }
+                          
+                     }  
+                     
+
+                     
+                     
+                });  
+      }
+      
+
+   });
 
     $('#CreateAccount').click(function(){
+    	$test=0;
+      
       if($('#fname').val()=="")
       {
         $('#fnameerror').show();
         $('#fname').css('border','solid 1px red');
         $('#fnameerror').html("This Field is Empty");
+        $test=1;
+
       }
       else
       {
         $('#fname').css('border','solid 1px #CED4DA');
         $('#fnameerror').hide();
+        
+        
       }
       if($('#lname').val()=="")
       {
         $('#lnameerror').show();
         $('#lname').css('border','solid 1px red');
         $('#lnameerror').html("This Field is Empty");
+        $test=1;
       }
       else
       {
         $('#lname').css('border','solid 1px #CED4DA');
         $('#lnameerror').hide();
+        
       }
       if(isEmail($("#Email").val())==false)
       {
         $('#Emailerror').show();
         $('#Emailerror').html("E-mail address not valid");
         $('#Email').css('border','solid 1px red');
+        $test=1;
       }
       else
       {
         $('#Email').css('border','solid 1px #CED4DA');
         $('#Emailerror').hide();
+        
       }
       if($('#Email').val()=="")
       {
         $('#Emailerror').show();
         $('#Emailerror').html("This Field is Empty");
         $('#Email').css('border','solid 1px red');
+        $test=1;
       }
       if(($.isNumeric($('#num').val())==false ))
       {
         $('#numerror').show();
         $('#num').css('border','solid 1px red');
         $('#numerror').html("Number not valid");
+        $test=1;
       }
       else
       {
         $('#num').css('border','solid 1px #CED4DA');
         $('#numerror').hide();
+        
       }
      
       if($('#state option:selected').text()=="Select State") 
@@ -409,46 +518,62 @@ font-weight: bold;
         $('#stateerror').show();
         $('#stateerror').html("Select an Option")
         $('#state').css('border','solid 1px red');
+        $test=1;
+       
       }
       else
       {
         $('#state').css('border','solid 1px #CED4DA');
         $('#stateerror').hide();
+        
+       
       }
       if($('#date').val()=="")
       {
         $('#dateerror').show();
         $('#dateerror').html("Enter a Date")
         $('#date').css('border','solid 1px red');
+        $test=1;
+       
       }
       else
       {
         $('#date').css('border','solid 1px #CED4DA');
         $('#dateerror').hide();
+        
+        
       }
       if($("#pass").val()=="")
       {
         $('#passerror').show();
         $('#passerror').html("This Field is Empty");
         $('#pass').css('border','solid 1px red');
+        $test=1;
+       
       }
       
       else
       {
         $('#pass').css('border','solid 1px #CED4DA');
         $('#passerror').hide();
+        
+       
      }
       if($('#cpass').val()=="")
       {
         $('#cpasserror').show();
         $('#cpasserror').html("This Field is Empty");
         $('#cpass').css('border','solid 1px red');
+        $test=1;
+       
       }
       
        else
       {
         $('#cpass').css('border','solid 1px #CED4DA');
         $('#cpasserror').hide();
+        
+        
       }
       if($('#pass').val()!=$('#cpass').val())
       {
@@ -458,6 +583,7 @@ font-weight: bold;
          $('#cpass').css('border','solid 1px red');
          $('#passerror').html("Passwords don't Match");
          $('#cpasserror').html("Passwords don't Match");
+         $test=1;
       }
       if($('#pass').val()==$('#cpass').val()&&$('#cpass').val()!="")
       {
@@ -465,8 +591,27 @@ font-weight: bold;
          $('#cpass').css('border','solid 1px #CED4DA');
          $('#passerror').hide();
          $('#cpasserror').hide();
+         
+         
       }
+      if($test==0)
+
+      {
+      	$('#signup').attr('action','signup.php');
+      	$('#CreateAccount').attr('type','submit');
+      	$.ajax({  
+                     url:"signup.php",  
+                     method:"POST",  
+                     data:$('#signup').serialize(),  
+                     success:function(data){  
+                          alert("Account Created Successfully!!")  ;
+                     }  
+                     
+                });  
+      }
+   
     });
+
 </script>
 </html>
 
