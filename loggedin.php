@@ -14,6 +14,7 @@ include 'home.php'
 	
 $('.logged').removeClass('hide');
 $('.sign').addClass('hide') ;
+$('.card-deck').removeClass('hide');
 
 </script>
 </html>

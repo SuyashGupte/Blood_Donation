@@ -1,12 +1,13 @@
 <?php
+session_start();
 include 'connect.php';
+
 if(isset($_POST['login'])){  
   
 if(!empty($_POST['emaillog']) && !empty($_POST['passlog'])) {  
     $email=$_POST['emaillog'];  
     $pass=$_POST['passlog'];  
   
-   
   
     $query="SELECT * FROM `accounts` WHERE email='".$email."' AND pass='".$pass."'";  
     $result=mysqli_query($con,$query);
@@ -23,9 +24,9 @@ if(!empty($_POST['emaillog']) && !empty($_POST['passlog'])) {
     if($email == $dbemail && $pass == $dbpass)  
     {  
     echo "success";
-    session_start();  
+    session_start();
     $_SESSION['sess_user']=$email;  
-  
+    echo session_status();
     /* Redirect browser */  
     header("Location:loggedin.php");
    
@@ -40,7 +41,8 @@ if(!empty($_POST['emaillog']) && !empty($_POST['passlog'])) {
 } else { 
 $message="Invalid Email/Password!!";
    echo "<script type='text/javascrip'> alert('$message'); </script>";
-   header("Location:home.php#login");
+   header("Location:home.php");
+
        
 }  
 } 

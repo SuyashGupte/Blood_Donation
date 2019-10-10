@@ -330,28 +330,28 @@ font-weight: bold;
 
 
 <br>
-  <div class="card-deck" id="donor">
-    <div class="card" style="width: 18rem;">
+  <div class="card-deck hide" >
+    <div class="card" style="width: 18rem;" id="donor">
       <img src="Images/Blood_donation.png" class="card-img-top" alt="Donor">
-      <div class="card-body">
+      <div class="card-body" >
         <p class="card-text">Blood donations can help save people's LIves. Learn how blood donations help, what to expect, and how to get ready for your first blood donation.Are you Eligible for blood donation? Find out about the EligibiLIty requirements to donate blood today. Learn about general health, travel, medications, tattoos, and more.</p>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" id="info">
       <img src="Images/GainKnowledge.jpeg" class="card-img-top" alt="Donor">
       <div class="card-body">
       <h5 class="card-title">Gain Knowledge about Blood Donation</h5>
       <p class="card-text">Your blood journeys through many steps and tests that ensure our blood supply is as safe as possible and helps as many people as possible.You can learn about all the steps your blood goes through before it reaches a recipient in an informative video.</p>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" id="patient">
       <img src="Images/BloodTransfusion.jpg" class="card-img-top" alt="Donor">
       <div class="card-body">
       	<h5 class="card-title">Patient Section</h5>
         <p class="card-text">Giving the "right" type of blood donation - based on your blood type and patient needs - helps ensure the best use of your valuable contribution. Here are some things to consider when determining how you can have the most impact.</p>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" id="report">
       <img src="Images/TransparentBackgroundPNG/Doctors.png" class="card-img-top" alt="Donor">
       <div class="card-body">
       	<h5 class="card-title">Generate Report</h5>
@@ -382,8 +382,11 @@ font-weight: bold;
 <script type="text/javascript">
 
 $('#donor').click(function(){
-    window.open("donor.html");
-   })
+    window.open("donor.php");
+   });
+$('#patient').click(function(){
+    window.open("patient.php");
+   });
 $('.logged').addClass('hide');
  function isEmail(Email) 
   {

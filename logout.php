@@ -1,7 +1,10 @@
 <?php
 session_start();
-unset($_SESSION['sess_user']);
+setcookie(session_name(),'',100);
+session_unset();
 session_destroy();
+$_SESSION=array();
+echo session_status();
 header("Location:home.php");
-exit;
+
 ?>
