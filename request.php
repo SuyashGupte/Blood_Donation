@@ -21,7 +21,7 @@ if(isset($_POST['request']))
     echo "3";
     
     
-       $query="INSERT INTO `request`(`id`, `pname`, `dname`, `req_bgroup`, `req_qty`, `status`) VALUES ('$id','$pname','','$bgroup','$qty','No')";
+       $query="INSERT INTO `request`(`id`, `pname`, `dname`, `req_bgroup`, `req_qty`, `status`) SELECT  ('$id','$pname','','$bgroup','$qty','No') WHERE `id`='{$_SESSION['sess_user']}' && `status`='Done'";
        $query_run=mysqli_query($con,$query);
         if($query_run)
         {

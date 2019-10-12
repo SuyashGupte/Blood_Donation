@@ -1,4 +1,7 @@
-
+<?php
+include 'connect.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +13,37 @@
  <link rel="stylesheet" type="text/css" href="CSS\DonorPage\Header.css">
  <link rel="stylesheet" type="text/css" href="CSS\DonorPage\Footer.css">	
  <style type="text/css">
- 	#dyna{
+ 	.dyna{
  		padding: 10px;
- 		margin: 20px 0 0 20px;
- 		width:400px;
- 		height:350px;
+ 		margin: 70px 0 0 40px;
+ 		width:300px;
+ 		height:280px;
  		border:solid 1px green;
  		border-radius: 15px;
+ 		display: inline-block;
+ 	
  	}
+    .approve{
+    	margin-top: 10px;
+    	margin-right: 20px;
+    	float: right;
+    }
+    .hide{
+    	display: none;
+    }
+    #gen{
+    	float: left;
+    }
+    .wer{
+    	padding: 10px;
+ 		margin: 70px 200px 0 20px;
+ 		width:300px;
+ 		height:550px;
+ 		border:solid 1px red;
+ 		border-radius: 15px;
+    	float:right;
+    	display: inline-block;
+    }
  </style>
 </head>
 <body>
@@ -36,7 +62,8 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<p><b>Click Here To generate Request(Only one Request per account)</b></p>
+ <button id="gen"type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Generate Request
 </button>
 
@@ -92,36 +119,123 @@
 </div>
 </form>
 </div>
+<?php
+$query1="SELECT * FROM `blood_bank` WHERE location='Mumbai'";
+$result1=mysqli_query($con,$query1);
+$numrows=mysqli_num_rows($result1);  
+while($row=mysqli_fetch_assoc($result1))
+{
 
+?>
+<div class="wer">
+	<div class="form-group row">
+        <label for="" class="col-sm ">Blood Name : <b><?php echo $row['name']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">Location : <b><?php echo $row['location']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">A+ :<b> <?php echo $row['A+']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">A- :<b> <?php echo $row['A-']; ?></b></label>
+        
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm col-form-label">B+ :<b> <?php echo $row['B+']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">B- :<b> <?php echo $row['B-']; ?></b></label>
+        
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm col-form-label">O+ :<b> <?php echo $row['O+']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">O- :<b> <?php echo $row['O-']; ?></b></label>
+        
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm col-form-label">AB+ :<b> <?php echo $row['AB+']; ?></b></label>
+        
+    </div>
+	<div class="form-group row">
+        <label for="" class="col-sm col-form-label">AB- :<b> <?php echo $row['AB-']; ?></b></label>
+        
+    </div>
+	</div>
+	<?php
+}
+	?>
+<?php
+$count=0;
+$space=" ";
+$query="SELECT accounts.email,accounts.fname,accounts.lname,request.pname,request.req_bgroup,request.req_qty,request.status FROM request INNER JOIN accounts ON request.id = accounts.email && request.status='NO'";
+
+$result=mysqli_query($con,$query);
+$numrows=mysqli_num_rows($result);  
+while($row=mysqli_fetch_assoc($result))
+   {
+   	$count=$count+1;
+   	if($row['email'] == $_SESSION['sess_user']){ 
+   		$id=$count;
+   	}
+   	else
+   	{
+   		$id=$count+100;
+   	}
+?>
 
 <!--REQUETS PENDING-->
 
- <div id="dyna">
+ <div class="dyna" id="<?php echo $count; ?>">
  	<div class="form-group row">
-        <label for="preq" class="col-sm-2 col-form-label">Patient Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="preq" id="preq" placeholder="">
-        </div>
+        <label for="preq" class="col-sm ">Patient Name : <b><?php echo $row['pname']; ?></b></label>
+        
     </div>
 	<div class="form-group row">
-        <label for="breq" class="col-sm-2 col-form-label">Blood Group</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="breq" id="breq" placeholder="">
-        </div>
+        <label for="breq" class="col-sm col-form-label">Blood Group : <b><?php echo $row['req_bgroup']; ?></b></label>
+        
     </div>
 	<div class="form-group row">
-        <label for="bqty" class="col-sm-2 col-form-label">Quantity</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="bqty" id="bqty" placeholder="">
-        </div>
+        <label for="bqty" class="col-sm col-form-label">Quantity :<b> <?php echo $row['req_qty']; ?></b></label>
+        
     </div>
 	<div class="form-group row">
-        <label for="gen" class="col-sm-2 col-form-label">Generated by</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" name="gen" id="gen" placeholder="">
-        </div>
+        <label for="gen" class="col-sm col-form-label">Generated by : <b><?php echo $row['fname'],$space,$row['lname']; ?></b></label>
+        
     </div>
-    <button type="submit" name="donate" class="btn btn-primary">Donate</button>
+    <button type="button" name="donate" class="btn btn-primary" id="donate1">Donate</button>
+    <p id="<?php echo $id; ?>"class="approve "><input id="<?php echo $id; ?>" type="checkbox" name="approved">Mark as Approved</p>
+    
+    <script type="text/javascript">
+    	var a=<?php echo $id; ?>;
+    	if(<?php echo $id; ?>>100)
+    	{
+    		var b=a;
+    		$('#'+a).addClass('hide');
+    	}
+    	
+    	
+    </script>
  </div>
+
+<?php
+}
+?> 
+
 </body>
+<script type="text/javascript">
+	$('input[name=approved]').click(function(){
+		window.open("status.php");
+	});
+    $('#donate1').click(function(){
+    	window.open("donor.php");
+    });
+</script>
 </html>
