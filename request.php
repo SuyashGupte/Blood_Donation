@@ -20,20 +20,31 @@ if(isset($_POST['request']))
     $qty=$_POST['qty'];  
     echo "3";
     
-    
-       $query="INSERT INTO `request`(`id`, `pname`, `dname`, `req_bgroup`, `req_qty`, `status`) SELECT  ('$id','$pname','','$bgroup','$qty','No') WHERE `id`='{$_SESSION['sess_user']}' && `status`='Done'";
+    	$query1="SELECT * FROM `request` WHERE `id`='{$_SESSION['sess_user']}' AND `status`='No'";
+    	 $result=mysqli_query($con,$query1);
+    	 $numrows=mysqli_num_rows($result);
+    	 echo $numrows;
+    	 if($numrows==0)
+    	 {
+       $query="INSERT INTO `request`(`id`, `pname`, `dname`, `req_bgroup`, `req_qty`, `status`) values( '$id','$pname','','$bgroup','$qty','No')";
        $query_run=mysqli_query($con,$query);
         if($query_run)
         {
 
             echo "Data Saved";
-           header("Location: patient.php");
+          	header("Location: patient.php");
       
         }
         else
         {
-            echo "Data Not Saved";
+               echo "Data Not Saved";
+               header("Location: patient.php");
+
         }
-    
+    }
+    else
+    {
+    	header("Location: patient.php");
+    }
 }
 ?>

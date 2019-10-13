@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 	<head>
@@ -68,12 +69,22 @@
 						<div class="container">
 
 							
-							
+							<?php
+    				include 'connect.php';
+    				session_start();
+    				$query="SELECT * FROM `doctor` WHERE `id`='{$_SESSION['sess_user']}'";
+    				$result1=mysqli_query($con,$query);
+					$numrows=mysqli_num_rows($result1);  
+					while($row=mysqli_fetch_assoc($result1))
+					{
+						?>
 								<div class="form-group">
 									<label for="pwd">Doctor ID:</label>
-									<input type="text" class="form-control" id="DocID" placeholder="Enter Doctor ID" name="DocID">
+									<input value="<?php echo $row['id'] ;?>"type="text" class="form-control" id="DocID" name="DocID" readonly>
 								</div>
-								
+								<?php
+							}
+								?>
 								<div class="form-group">
 									<label for="name">Name:</label>
 									<input type="text" class="form-control" id="name" placeholder="Enter Full Name of the Donor." name="name">
@@ -191,7 +202,7 @@
 			==============-->
 			<div  class="row">
 				<div id = "DonorRegistration" class="card">
-					<a  class = "CardLink" data-toggle="modal" data-target="#DonorRegistrationModal" href = "#">
+					<a  id="doctor"class = "CardLink" data-toggle="modal" data-target="" href = "#">
 						<img src="Images/Registration.jpg" alt="Avatar" height="250px" style="width:100%">
 						<div class="container">
 							<i id = "CardIcon" class="fa fa-user-md"></i>
@@ -266,8 +277,13 @@
 			</div>						
 	</body>
 			<script type="text/javascript">
-
+				if(<?php echo $numrows; ?>!=0)
+				{
+					$('#DonorRegistration').click(function(){
+						$('#doctor').attr('data-target','#DonorRegistrationModal');
+					});
     			$('#donate').click(function(){
+    				
 				$('#bdonor').attr('action','donate.php');
       			$('#donate').attr('type','submit');
       			$.ajax({  
@@ -280,5 +296,6 @@
                      
                 });
                 }); 
+    		}
 			</script>
 </html>
